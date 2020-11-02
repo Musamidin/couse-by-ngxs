@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SimpleCalendarComponent, HeatMapModel, ColorMapModel } from './../simple-calendar/simple-calendar.component';
-import { SimpleDate } from 'src/simple-calendar/simple-calendar.component';
+import { SimpleCalendarComponent, HeatMapModel, ColorMapModel } from './simple-calendar/simple-calendar.component';
+import { SimpleDate } from 'src/app/simple-calendar/simple-calendar.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

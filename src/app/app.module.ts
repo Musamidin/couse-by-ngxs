@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'primeng/calendar';
 import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
-import { SimpleCalendarModule } from './../simple-calendar/simple-calendar.module';
+import { SimpleCalendarModule } from './simple-calendar/simple-calendar.module';
 @NgModule({
   declarations: [
     AppComponent

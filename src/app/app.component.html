@@ -15,27 +15,27 @@
 </p-dialog>
 
 
-<p-calendar [(ngModel)]="date14"
-            [touchUI]="true"
-            [readonlyInput]="true"
-            inputId="touchui"
-            dateFormat="dd/mm/yyyy"
-            selectionMode="multiple"
-            [(ngModel)]="dates"
-            (change)="test($event)">
-</p-calendar>
+<!--<p-calendar [(ngModel)]="date14"-->
+<!--            [touchUI]="true"-->
+<!--            [readonlyInput]="true"-->
+<!--            inputId="touchui"-->
+<!--            dateFormat="dd/mm/yyyy"-->
+<!--            selectionMode="multiple"-->
+<!--            [(ngModel)]="dates"-->
+<!--            (change)="test($event)">-->
+<!--</p-calendar>-->
 
 
-<!--<div>-->
-<!--  <simple-calendar-->
-<!--    [selectedDate]="selDate"-->
-<!--    [heatmap]="heatmap"-->
-<!--    [openPage]="selDate"-->
-<!--    (change)="dateChanged($event)"-->
-<!--    #simpleCalender-->
-<!--    (monthChange)="monthChanged($event)"-->
-<!--    [highlightToday]="highlightToday"-->
-<!--    [ColorMap]="colorMap">-->
-<!--  </simple-calendar>-->
-<!--</div>-->
+<div>
+  <simple-calendar
+    [selectedDate]="selDate"
+    [heatmap]="heatmap"
+    [openPage]="selDate"
+    (change)="dateChanged($event)"
+    #simpleCalender
+    (monthChange)="monthChanged($event)"
+    [highlightToday]="highlightToday"
+    [ColorMap]="colorMap">
+  </simple-calendar>
+</div>
 
