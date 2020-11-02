@@ -1,7 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+// @ts-ignore
+import { Button  } from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 import { SimpleCalendarComponent } from './simple-calendar.component';
 
 
@@ -11,8 +12,8 @@ import { SimpleCalendarComponent } from './simple-calendar.component';
   ],
   imports: [
     CommonModule,
-    MatIconModule,
-    MatButtonModule,
+    Button,
+    Icon
   ],
   exports: [
     SimpleCalendarComponent,
