@@ -1,0 +1,73 @@
+<dp-day-calendar hidden [(ngModel)]="dates" [config]="config" (ngModelChange)="modelChange()"></dp-day-calendar>
+<dp-month-calendar hidden [displayDate]="_currentDateView" [ngModel]="_selected" [config]="config"></dp-month-calendar>
+<ng-container *ngIf="initCalendar">
+  <div class="wrapper" *ngIf="currentCalendarMode===calendarModes.Day; else templateRef">
+    <div class="nav">
+      <div class="nav-left">
+        <button *ngIf="showLeftNav" (click)="onLeftNavClick()" type="button" class="btn btn-light btn-sm nav-btn">&#60;</button>
+      </div>
+      <div class="header">
+        <input type="checkbox" class="mr-1" [checked]="currentMonthClicked" (click)="monthClicked($event.target.checked)">
+        <span class="nav-label" (click)="toggleCalendarMode(calendarModes.Month)">{{navLabel}}</span>
+      </div>
+      <div class="nav-right">
+        <button *ngIf="showRightNav" (click)="onRightNavClick()" type="button" class="btn btn-light btn-sm nav-btn">&#62;</button>
+      </div>
+    </div>
+
+    <div class="custom-table">
+      <div class="custom-table__row">
+        <div class="custom-table__cell"></div>
+        <div class="custom-table__cell custom-table__cell_title">ПН</div>
+        <div class="custom-table__cell custom-table__cell_title">ВТ</div>
+        <div class="custom-table__cell custom-table__cell_title">СР</div>
+        <div class="custom-table__cell custom-table__cell_title">ЧТ</div>
+        <div class="custom-table__cell custom-table__cell_title">ПТ</div>
+        <div class="custom-table__cell custom-table__cell_title">СБ</div>
+        <div class="custom-table__cell custom-table__cell_title">Вс</div>
+      </div>
+      <div class="custom-table__row" *ngFor="let week of weeks; index as i">
+        <div class="custom-table__cell custom-table__cell_another-month">
+          <input type="checkbox" [checked]="displayedWeekCheckbox[i]"
+                 (click)="weekClicked($event.target.checked, week, i)">
+        </div>
+        <div class="custom-table__cell"
+             *ngFor="let day of week"
+             (click)="dayClicked(day)"
+             [class.custom-table__cell_selected]="day.selected"
+             [class.custom-table__cell_disable]="day.disabled"
+             [class.custom-table__cell_another-month]="day.nextMonth || day.prevMonth"
+        >{{day.date.format('D')}}</div>
+      </div>
+    </div>
+
+  </div>
+
+  <ng-template #templateRef>
+    <div class="wrapper">
+      <div class="nav">
+        <div class="nav-left">
+          <button *ngIf="showLeftNav" (click)="onLeftNavClick()" type="button" class="btn btn-light btn-sm nav-btn">&#60;</button>
+        </div>
+        <div class="header">
+          <span class="nav-label" (click)="toggleCalendarMode(calendarModes.Day)">{{monthNavLabel}}</span>
+        </div>
+        <div class="nav-right">
+          <button *ngIf="showRightNav" (click)="onRightNavClick()" type="button" class="btn btn-light btn-sm nav-btn">&#62;</button>
+        </div>
+      </div>
+
+      <div class="custom-table">
+        <div class="custom-table__row" *ngFor="let monthRow of months; index as i">
+          <div class="custom-table__cell"
+               *ngFor="let month of monthRow"
+               (click)="monthSelected(month)"
+               [class.custom-table__cell_selected]="month.selected"
+               [class.custom-table__cell_disable]="month.disabled"
+          >{{month.date.format('MMM')}}</div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ng-container>
+
