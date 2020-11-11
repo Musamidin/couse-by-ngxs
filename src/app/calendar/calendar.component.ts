@@ -48,7 +48,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
   ngOnInit(): void {
   }
 
-  get weeks() {
+  get weeks(): any {
     return this.calendarComponent.weeks;
   }
 
@@ -56,7 +56,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
     return this.calendarComponent.currentCalendarMode;
   }
 
-  get calendarModes() {
+  get calendarModes(): any {
     return this.calendarComponent.CalendarMode;
   }
 
@@ -68,7 +68,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
     return this.monthCalendarComponent.navLabel;
   }
 
-  get months() {
+  get months(): any {
     return this.monthCalendarComponent.yearMonths;
   }
 
@@ -80,14 +80,14 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
     return this.calendarComponent.showRightNav;
   }
 
-  get _currentDateView() {
+  get _currentDateView(): any {
     if (this.calendarComponent) {
       return this.calendarComponent._currentDateView;
     }
     return null;
   }
 
-  get _selected() {
+  get _selected(): any {
     if (this.calendarComponent) {
       return this.calendarComponent._selected;
     }

@@ -1,10 +1,25 @@
 
+<button type="button" class="btn btn-info"
+        (click)="openModal(template)">Create template modal</button>
 
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right"
+            aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    This is a modal.
+  </div>
+</ng-template>
 <br>
-<p-button (click)="showModalDialog()" icon="pi pi-external-link" label="Show"></p-button>
+<br>
+<!--<p-button (click)="showModalDialog()" icon="pi pi-external-link" label="Show"></p-button>-->
 
-<p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [baseZIndex]="10000"
-          [draggable]="false" [resizable]="false">
+<!--<p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [baseZIndex]="10000"-->
+<!--          [draggable]="false" [resizable]="false">-->
 
 <!--  <scandit-sdk-barcode-picker-->
 <!--    class="sizener"-->
@@ -22,27 +37,17 @@
 <!--    (scan)="onScan($event.barcodes)"-->
 <!--    (error)="onError($event)"-->
 <!--  ></scandit-sdk-barcode-picker>-->
-  <app-calendar></app-calendar>
-  <ng-template pTemplate="footer">
-    <p-button icon="pi pi-times" (click)="setClear()" label="Clear" styleClass="p-button-text"></p-button>
-    <p-button icon="pi pi-check" (click)="checker()" label="Yes" styleClass="p-button-text"></p-button>
-  </ng-template>
-</p-dialog>
+<!--  <app-calendar></app-calendar>-->
+<!--  <ng-template pTemplate="footer">-->
+<!--    <p-button icon="pi pi-times" (click)="setClear()" label="Clear" styleClass="p-button-text"></p-button>-->
+<!--    <p-button icon="pi pi-check" (click)="checker()" label="Yes" styleClass="p-button-text"></p-button>-->
+<!--  </ng-template>-->
+<!--</p-dialog>-->
 <br>
 <br>
 <br>
-<input type="text" [(ngModel)]="val">
-
-<!--<p-calendar [(ngModel)]="date14"-->
-<!--            [touchUI]="true"-->
-<!--            [readonlyInput]="true"-->
-<!--            inputId="touchui"-->
-<!--            dateFormat="dd/mm/yyyy"-->
-<!--            selectionMode="multiple"-->
-<!--            [(ngModel)]="dates"-->
-<!--            (change)="test($event)">-->
-<!--</p-calendar>-->
-
+<input type="text" [(ngModel)]="val1">
+<input type="text" [(ngModel)]="val2">
 
 <!--<div>-->
 <!--  <simple-calendar-->
