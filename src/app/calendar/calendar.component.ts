@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
 import {DayCalendarComponent, ECalendarMode, IDay, IDayCalendarConfig, IMonth, MonthCalendarComponent} from 'ng2-date-picker';
-import {Moment} from 'moment';
 import * as moment from 'moment';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
@@ -18,8 +17,10 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 })
 export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 
-  dates: Moment[] = [];
+  //dates: Moment[] = [];
+  dates: string[] = [];
   config: IDayCalendarConfig = {
+    min: '13/11/2020',
     locale: 'ru',
     allowMultiSelect: true,
     monthFormat: 'MMMM, YYYY',
@@ -29,6 +30,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
   };
   initCalendar = false;
   displayedWeekCheckbox: { [key: number]: boolean } = {};
+  disabledChBx: { [key: number]: boolean } = {};
   currentMonthClicked = false;
 
   @ViewChild(DayCalendarComponent) calendarComponent: DayCalendarComponent;
@@ -97,7 +99,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
   dayClicked(day: IDay, groupSelect = false): void  {
     if (!day.disabled && !day.nextMonth && !day.prevMonth) {
       this.calendarComponent.dayClicked(day);
-      console.log(day.date.format('DD/MM/YYYY'));
+      //console.log(day.date.format('DD/MM/YYYY'));
     }
     if (day.prevMonth && !groupSelect) {
       this.onLeftNavClick();
@@ -164,6 +166,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
   }
 
   propagateChange = (dates: string[]) => {
+    console.log(dates);
   }
 
   registerOnChange(fn: any): void {
@@ -178,13 +181,13 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
 
   writeValue(dates: string[]): void {
     if (dates && dates.length) {
-      this.dates = dates.map(date => moment(date));
+      this.dates = dates.map(date => moment(date).format('DD/MM/YYYY'));
     } else {
       this.dates = [];
     }
   }
 
   modelChange(): void {
-    this.propagateChange(this.dates.map((date) => date.toISOString()));
+    this.propagateChange(this.dates.map((date) => moment(date).format('DD/MM/YYYY'))); //.toISOString()
   }
 }

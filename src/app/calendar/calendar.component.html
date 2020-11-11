@@ -28,7 +28,7 @@
       </div>
       <div class="custom-table__row" *ngFor="let week of weeks; index as i">
         <div class="custom-table__cell custom-table__cell_another-month">
-          <input type="checkbox" [checked]="displayedWeekCheckbox[i]"
+          <input type="checkbox" [disabled]="disabledChBx[i]" [checked]="displayedWeekCheckbox[i]"
                  (click)="weekClicked($event.target.checked, week, i)">
         </div>
         <div class="custom-table__cell"
