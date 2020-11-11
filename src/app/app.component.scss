@@ -1,8 +1,10 @@
-div {
-  width:200px;
-  height: 150px;
+.modal-header .close {
+  outline: none;
 }
-
-.sizener{
-  width: 345px;
+.modal-header {
+  padding: 0.3em 0.5rem;
+  border-bottom: none!important;
+}
+.modal-body {
+  padding-top: 5px;
 }

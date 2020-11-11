@@ -13,8 +13,14 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 10px;
 }
-
+.btn-light {
+  color: #212529;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
 .nav-btn {
   color: #4a4a4a;
   font-weight: 700;
@@ -79,4 +85,9 @@
   background-color: #eeeeee;
   color: #f8000a;
 }
-
+.week-days-row{
+  height: 20px;
+}
+.week-days-row > div{
+  font-size: 12px;
+}
