@@ -95,9 +95,9 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
   }
 
   dayClicked(day: IDay, groupSelect = false) {
-    if (!day.disabled) {
+    if (!day.disabled && !day.nextMonth && !day.prevMonth) {
       this.calendarComponent.dayClicked(day);
-      console.log(day.date.day()+'/'+day.date.month()+'/'+day.date.year());
+      console.log(day.date.format('DD/MM/YYYY'));
     }
     if (day.prevMonth && !groupSelect) {
       this.onLeftNavClick();

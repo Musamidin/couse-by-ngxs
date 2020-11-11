@@ -1,5 +1,5 @@
-<dp-day-calendar hidden [(ngModel)]="dates" [config]="config" (ngModelChange)="modelChange()"></dp-day-calendar>
-<dp-month-calendar hidden [displayDate]="_currentDateView" [ngModel]="_selected" [config]="config"></dp-month-calendar>
+<dp-day-calendar style="display: none" hidden [(ngModel)]="dates" [config]="config" (ngModelChange)="modelChange()"></dp-day-calendar>
+<dp-month-calendar style="display: none" hidden [displayDate]="_currentDateView" [ngModel]="_selected" [config]="config"></dp-month-calendar>
 <ng-container *ngIf="initCalendar">
   <div class="wrapper" *ngIf="currentCalendarMode===calendarModes.Day; else templateRef">
     <div class="nav">
