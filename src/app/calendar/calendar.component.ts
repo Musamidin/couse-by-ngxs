@@ -94,7 +94,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
     return null;
   }
 
-  dayClicked(day: IDay, groupSelect = false) {
+  dayClicked(day: IDay, groupSelect = false): void  {
     if (!day.disabled && !day.nextMonth && !day.prevMonth) {
       this.calendarComponent.dayClicked(day);
       console.log(day.date.format('DD/MM/YYYY'));
@@ -107,7 +107,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
 
   }
 
-  weekClicked(state: boolean, days: IDay[], index: number) {
+  weekClicked(state: boolean, days: IDay[], index: number): void {
     if (days.some(day => !day.disabled)) {
       this.displayedWeekCheckbox[index] = state;
       if (state) {
@@ -164,7 +164,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
   }
 
   propagateChange = (dates: string[]) => {
-  };
+  }
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
@@ -184,7 +184,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
     }
   }
 
-  modelChange() {
+  modelChange(): void {
     this.propagateChange(this.dates.map((date) => date.toISOString()));
   }
 }
