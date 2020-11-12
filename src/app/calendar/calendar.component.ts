@@ -2,6 +2,7 @@ import {AfterViewInit, Component, forwardRef, Input, OnInit, ViewChild} from '@a
 import {DayCalendarComponent, ECalendarMode, IDay, IDayCalendarConfig, IMonth, MonthCalendarComponent} from 'ng2-date-picker';
 import * as moment from 'moment';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Moment} from 'moment';
 
 @Component({
   selector: 'app-calendar',
@@ -17,8 +18,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 })
 export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 
-  //dates: Moment[] = [];
-  dates: string[] = [];
+  dates: Moment[] = [];
   config: IDayCalendarConfig = {
     min: '13/11/2020',
     locale: 'ru',
@@ -99,7 +99,6 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
   dayClicked(day: IDay, groupSelect = false): void  {
     if (!day.disabled && !day.nextMonth && !day.prevMonth) {
       this.calendarComponent.dayClicked(day);
-      //console.log(day.date.format('DD/MM/YYYY'));
     }
     if (day.prevMonth && !groupSelect) {
       this.onLeftNavClick();
@@ -166,7 +165,6 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
   }
 
   propagateChange = (dates: string[]) => {
-    console.log(dates);
   }
 
   registerOnChange(fn: any): void {
@@ -181,13 +179,13 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
 
   writeValue(dates: string[]): void {
     if (dates && dates.length) {
-      this.dates = dates.map(date => moment(date).format('DD/MM/YYYY'));
+      this.dates = dates.map(date => moment(date));
     } else {
       this.dates = [];
     }
   }
 
   modelChange(): void {
-    this.propagateChange(this.dates.map((date) => moment(date).format('DD/MM/YYYY'))); //.toISOString()
+    this.propagateChange(this.dates.map((date) => moment(date).toISOString()));
   }
 }

@@ -9,7 +9,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-calendar></app-calendar>
+    <app-calendar [(ngModel)]="datess" (ngModelChange)="tfunc()"></app-calendar>
   </div>
 
   <div class="modal-footer">
