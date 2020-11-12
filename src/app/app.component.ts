@@ -9,28 +9,35 @@ import * as moment from 'moment';
 export class AppComponent {
   displayModal: boolean;
   val1: string;
-  val2: number;
-  datess: string[] = [];
+  val2: string;
+  val3: number;
+  tv: number;
+  dates: string[] = [];
+  allDates: string[] = [];
   modalRef: BsModalRef;
   minD: any = '14/11/2020';
   constructor(private modalService: BsModalService) {}
 
-  openModal(template: TemplateRef<any>): void {
+  openModal(template: TemplateRef<any>, tvp: number): void {
     this.modalRef = this.modalService.show(template);
+    console.log(tvp);
+    this.tv = tvp;
+    this.allDates = [];
   }
 
   setClear(): void {
     this.val1 = '';
-    this.val2 = 0;
+    this.val2 = '';
   }
 
   done(): void {
     this.modalRef.hide();
-    console.log(this.val2);
   }
 
   onChangeCalendar(): void {
-    this.val1 = this.datess.map(date => moment(date).format('DD/MM/YYYY')).toString();
-    this.val2 = this.datess.length;
+    switch (this.tv) {
+      case 1 : { this.val1 = this.allDates.map(date => moment(date).format('DD/MM/YYYY')).toString(); this.val3 = this.allDates.length; } break;
+      case 2: { this.val2 = this.allDates.map(date => moment(date).format('DD/MM/YYYY')).toString(); this.val3 = this.allDates.length; } break;
+    }
   }
 }

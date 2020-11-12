@@ -1,6 +1,6 @@
 <br>
 <br>
-<button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
+<!--<button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>-->
 
 <ng-template #template>
   <div class="modal-header">
@@ -9,7 +9,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-calendar [(ngModel)]="datess" (ngModelChange)="onChangeCalendar()" [minDate]="minD"></app-calendar>
+    <app-calendar [(ngModel)]="allDates" (ngModelChange)="onChangeCalendar()" [minDate]="minD"></app-calendar>
   </div>
 
   <div class="modal-footer">
@@ -24,10 +24,13 @@
 <br>
 <br>
 <br>
-<input type="text" [(ngModel)]="val1" (click)="openModal(template)" style="width: 100%;">
+<input type="text" [(ngModel)]="val1" (click)="openModal(template,1)" style="width: 70%;">
 <br>
 <br>
-<input type="text" [(ngModel)]="val2" (click)="openModal(template)" style="width: 100%;">
+<input type="text" [(ngModel)]="val2" (click)="openModal(template,2)" style="width: 70%;">
+<br>
+<br>
+<input type="text" [(ngModel)]="val3" (click)="openModal(template,3)" style="width: 70%;">
 
 
 
