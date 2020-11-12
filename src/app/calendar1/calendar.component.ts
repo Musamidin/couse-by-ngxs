@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
 import {DayCalendarComponent, ECalendarMode, IDay, IDayCalendarConfig, IMonth, MonthCalendarComponent} from 'ng2-date-picker';
 import * as moment from 'moment';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
@@ -20,6 +20,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
 
   dates: Moment[] = [];
   config: IDayCalendarConfig = {
+    min: '13/11/2020',
     locale: 'ru',
     allowMultiSelect: true,
     monthFormat: 'MMMM, YYYY',
@@ -29,7 +30,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
   };
   initCalendar = false;
   displayedWeekCheckbox: { [key: number]: boolean } = {};
-  enabledCheckboxes: { [key: number]: boolean } = {};
+  disabledChBx: { [key: number]: boolean } = {};
   currentMonthClicked = false;
 
   @ViewChild(DayCalendarComponent) calendarComponent: DayCalendarComponent;
@@ -43,9 +44,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
     this.config = {...this.config, max: value};
   }
 
-  constructor(
-    private changeDetectorRef: ChangeDetectorRef
-  ) {
+  constructor() {
   }
 
   ngOnInit(): void {
@@ -97,7 +96,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
     return null;
   }
 
-  dayClicked(day: IDay, groupSelect = false): void {
+  dayClicked(day: IDay, groupSelect = false): void  {
     if (!day.disabled && !day.nextMonth && !day.prevMonth) {
       this.calendarComponent.dayClicked(day);
     }
@@ -157,18 +156,16 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
     this.displayedWeekCheckbox = {};
     this.calendarComponent.weeks.forEach((week, index) => {
       this.displayedWeekCheckbox[index] = week.some(day => day.selected);
-      this.enabledCheckboxes[index] = !(week.some(day => !day.disabled));
     });
   }
 
   ngAfterViewInit(): void {
     this.initCalendar = true;
     this.updateWeekCheckboxes();
-    this.changeDetectorRef.detectChanges();
   }
 
   propagateChange = (dates: string[]) => {
-  };
+  }
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
@@ -186,7 +183,6 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
     } else {
       this.dates = [];
     }
-    this.changeDetectorRef.detectChanges();
   }
 
   modelChange(): void {

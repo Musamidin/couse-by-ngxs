@@ -9,7 +9,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-calendar [(ngModel)]="datess" (ngModelChange)="tfunc()"></app-calendar>
+    <app-calendar [(ngModel)]="datess" (ngModelChange)="onChangeCalendar()" [minDate]="minD"></app-calendar>
   </div>
 
   <div class="modal-footer">
@@ -24,10 +24,10 @@
 <br>
 <br>
 <br>
-<input type="text" [(ngModel)]="val1" (click)="openModal(template)">
+<input type="text" [(ngModel)]="val1" (click)="openModal(template)" style="width: 100%;">
 <br>
 <br>
-<input type="text" [(ngModel)]="val2" (click)="openModal(template)">
+<input type="text" [(ngModel)]="val2" (click)="openModal(template)" style="width: 100%;">
 
 
 
