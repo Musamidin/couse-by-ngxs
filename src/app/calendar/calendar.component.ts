@@ -167,8 +167,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, ControlValueAcc
     this.changeDetectorRef.detectChanges();
   }
 
-  propagateChange = (dates: string[]) => {
-  };
+  propagateChange = (dates: string[]) => {};
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;

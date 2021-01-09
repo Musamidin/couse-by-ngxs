@@ -1,33 +1,42 @@
-import {Component, TemplateRef} from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import * as moment from 'moment';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {Moment} from 'moment';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  displayModal: boolean;
-  val1: string;
-  val2: string;
-  val3: number;
-  tv: number;
-  dates: string[] = [];
-  allDates: string[] = [];
+export class AppComponent implements OnInit{
+  formGroup: FormGroup;
+  dates: Moment[] = [];
   modalRef: BsModalRef;
-  minD: any = '14/11/2020';
-  constructor(private modalService: BsModalService) {}
+  minD: any = '08/01/2021';
+  channel = '';
+  constructor(private modalService: BsModalService, private fb: FormBuilder) {}
 
-  openModal(template: TemplateRef<any>, tvp: number): void {
-    this.modalRef = this.modalService.show(template);
-    console.log(tvp);
-    this.tv = tvp;
-    this.allDates = [];
+  ngOnInit(): void {
+    this.formBuilder();
   }
 
-  setClear(): void {
-    this.val1 = '';
-    this.val2 = '';
+  openModal(template: TemplateRef<any>, channel: string): void {
+    this.dates = [];
+    this.modalRef = this.modalService.show(template);
+    this.channel = channel;
+    if (this.formGroup.get(this.channel).value)
+    {
+      this.dates = this.formGroup.get(this.channel).value.split(',')
+        .map((date) => moment(date.split('/').reverse().join('-')).toISOString());
+    }
+  }
+
+  formBuilder(): void {
+    this.formGroup = this.fb.group({
+      ktrk: [''],
+      nts: [''],
+      eltr: [''],
+    });
   }
 
   done(): void {
@@ -35,9 +44,6 @@ export class AppComponent {
   }
 
   onChangeCalendar(): void {
-    switch (this.tv) {
-      case 1 : { this.val1 = this.allDates.map(date => moment(date).format('DD/MM/YYYY')).toString(); this.val3 = this.allDates.length; } break;
-      case 2: { this.val2 = this.allDates.map(date => moment(date).format('DD/MM/YYYY')).toString(); this.val3 = this.allDates.length; } break;
-    }
+    this.formGroup.get(this.channel).setValue(this.dates.map(date => moment(date).format('DD/MM/YYYY')).toString());
   }
 }

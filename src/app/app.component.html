@@ -9,7 +9,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-calendar [(ngModel)]="allDates" (ngModelChange)="onChangeCalendar()" [minDate]="minD"></app-calendar>
+    <app-calendar [(ngModel)]="dates" (ngModelChange)="onChangeCalendar()" [minDate]="minD"></app-calendar>
   </div>
 
   <div class="modal-footer">
@@ -24,13 +24,16 @@
 <br>
 <br>
 <br>
-<input type="text" [(ngModel)]="val1" (click)="openModal(template,1)" style="width: 70%;">
-<br>
-<br>
-<input type="text" [(ngModel)]="val2" (click)="openModal(template,2)" style="width: 70%;">
-<br>
-<br>
-<input type="text" [(ngModel)]="val3" (click)="openModal(template,3)" style="width: 70%;">
+<div [formGroup]="formGroup">
+  <input type="text" formControlName="ktrk" (click)="openModal(template, 'ktrk')" style="width: 70%;">
+  <br>
+  <br>
+  <input type="text" formControlName="nts" (click)="openModal(template, 'nts')" style="width: 70%;">
+  <br>
+  <br>
+  <input type="text" formControlName="eltr" (click)="openModal(template, 'eltr')" style="width: 70%;">
+</div>
+
 
 
 
