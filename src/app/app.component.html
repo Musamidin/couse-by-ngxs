@@ -6,22 +6,22 @@
 <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [baseZIndex]="10000"
           [draggable]="false" [resizable]="false">
 
-<!--  <scandit-sdk-barcode-picker-->
-<!--    class="sizener"-->
-<!--    [scanSettings]="settings"-->
-<!--    [accessCamera]="true"-->
-<!--    [enableCameraSwitcher]="true"-->
-<!--    [enableTorchToggle]="true"-->
-<!--    [enablePinchToZoom]="true"-->
-<!--    [enableTapToFocus]="true"-->
-<!--    [playSoundOnScan]="true"-->
-<!--    [vibrateOnScan]="true"-->
-<!--    [targetScanningFPS]="30"-->
-<!--    [zoom]="0"-->
-<!--    [mirrorImage]="false"-->
-<!--    (scan)="onScan($event.barcodes)"-->
-<!--    (error)="onError($event)"-->
-<!--  ></scandit-sdk-barcode-picker>-->
+  <scandit-sdk-barcode-picker
+    class="sizener"
+    [scanSettings]="settings"
+    [accessCamera]="true"
+    [enableCameraSwitcher]="true"
+    [enableTorchToggle]="true"
+    [enablePinchToZoom]="true"
+    [enableTapToFocus]="true"
+    [playSoundOnScan]="true"
+    [vibrateOnScan]="true"
+    [targetScanningFPS]="30"
+    [zoom]="0"
+    [mirrorImage]="false"
+    (scan)="onScan($event.barcodes)"
+    (error)="onError($event)"
+  ></scandit-sdk-barcode-picker>
   <app-calendar></app-calendar>
   <ng-template pTemplate="footer">
     <p-button icon="pi pi-times" (click)="setClear()" label="Clear" styleClass="p-button-text"></p-button>
