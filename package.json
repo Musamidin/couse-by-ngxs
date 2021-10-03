@@ -22,6 +22,7 @@
     "@angular/router": "~10.1.6",
     "@material-ui/core": "^4.11.0",
     "@ng-bootstrap/ng-bootstrap": "^8.0.0",
+    "@ngxs/store": "^3.7.2",
     "bootstrap": "^4.5.3",
     "material": "^0.4.3",
     "moment": "^2.29.1",
@@ -30,12 +31,15 @@
     "rxjs": "~6.6.0",
     "scandit-sdk-angular": "^3.1.1",
     "tslib": "^2.0.0",
+    "uuid": "^8.3.2",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1002.0",
     "@angular/cli": "~10.1.7",
     "@angular/compiler-cli": "~10.1.6",
+    "@ngxs/devtools-plugin": "^3.7.2",
+    "@ngxs/logger-plugin": "^3.7.2",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",

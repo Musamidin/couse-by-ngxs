@@ -1,12 +1,24 @@
+import { CourseModule } from './course/course.module';
+import { CreateCourseComponent } from './course/components/create-course/create-course.component';
+import { CoursesListComponent } from './course/components/courses-list/courses-list.component';
+import { CourseState } from './course/store/course.state';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule } from './calendar/calendar.module';
-import { ModalModule } from 'ngx-bootstrap/modal';
+
+const routes = [
+  {
+    path: 'courses',
+    component: CoursesListComponent
+  },
+  {path: 'create-course', component: CreateCourseComponent},
+  {path: '**', redirectTo: 'courses'}
+];
 
 @NgModule({
   declarations: [
@@ -14,12 +26,13 @@ import { ModalModule } from 'ngx-bootstrap/modal';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    CalendarModule,
-    FormsModule,
-    ModalModule.forRoot(),
-    ReactiveFormsModule
+    RouterModule.forRoot(routes),
+    NgxsModule.forRoot([
+      CourseState
+    ]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
+    CourseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

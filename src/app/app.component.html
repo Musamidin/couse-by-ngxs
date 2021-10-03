@@ -2,7 +2,7 @@
 <br>
 <!--<button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>-->
 
-<ng-template #template>
+<!-- <ng-template #template>
   <div class="modal-header">
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
@@ -16,25 +16,50 @@
     <button type="button" class="btn btn-default mr-auto" (click)="done()">Отменить</button>
     <button type="button" class="btn btn-default" (click)="done()">Сохранить</button>
   </div>
-</ng-template>
+</ng-template> -->
+<!-- <br>
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
-<br>
-<div [formGroup]="formGroup">
-  <input type="text" formControlName="ktrk" (click)="openModal(template, 'ktrk')" style="width: 70%;">
-  <br>
-  <br>
-  <input type="text" formControlName="nts" (click)="openModal(template, 'nts')" style="width: 70%;">
-  <br>
-  <br>
-  <input type="text" formControlName="eltr" (click)="openModal(template, 'eltr')" style="width: 70%;">
+<div [formGroup]="tvFormGroup">
+  <label for="tvname">Tv Name: </label>
+    <input type="text" formControlName="tvname">
+    <br>
+    <label for="salesPrice">salesPrice: </label>
+    <input type="text" formControlName="salesPrice">
+    <br>
+    <label for="buyPrice">buyPrice: </label>
+    <input type="text" formControlName="buyPrice">
+    <br>
+    <label for="reportPrice">reportPrice: </label>
+    <input type="text" formControlName="reportPrice">
+    <br>
+    <label for="deadLine">deadLine: </label>
+    <input type="text" formControlName="deadLine">
+    <br>
+    <input type="file" class="file-input" (change)="handleChanges($event)" #fileUpload>
+    <br>
 </div>
 
+<button (click)="save()">Save</button> -->
 
+<div>
+  <div>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="courses" routerLinkActive="active">List Courses</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="create-course" routerLinkActive="active">Create Course</a>
+          </li>
+      </ul>
+  </div>
 
+  <div style="margin-top: 20px;">
+      <router-outlet></router-outlet>
+  </div>
 
-
+</div>

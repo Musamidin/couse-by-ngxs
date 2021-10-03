@@ -1,49 +1,50 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import * as moment from 'moment';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {Moment} from 'moment';
+//import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+//import { AdminService } from './services/admin.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  formGroup: FormGroup;
-  dates: Moment[] = [];
-  modalRef: BsModalRef;
-  minD: any = '08/01/2021';
-  channel = '';
-  constructor(private modalService: BsModalService, private fb: FormBuilder) {}
+  //tvFormGroup: FormGroup;
+  //img: File = null;
+  constructor() {} //private fb: FormBuilder, private adminService: AdminService
 
   ngOnInit(): void {
-    this.formBuilder();
+    //this.initForm();
   }
 
-  openModal(template: TemplateRef<any>, channel: string): void {
-    this.dates = [];
-    this.modalRef = this.modalService.show(template);
-    this.channel = channel;
-    if (this.formGroup.get(this.channel).value)
-    {
-      this.dates = this.formGroup.get(this.channel).value.split(',')
-        .map((date) => moment(date.split('/').reverse().join('-')).toISOString());
-    }
-  }
+  // initForm(): void {
+  //   this.tvFormGroup = this.fb.group({
+  //     id: [0],
+  //     tvname: [null, Validators.required],
+  //     controlId: ['piramida'],
+  //     salesPrice: [null, Validators.required],
+  //     buyPrice: [null, Validators.required],
+  //     reportPrice: [0],
+  //     discount: [null],
+  //     isReport: [true],
+  //     info: [null],
+  //     deadLine: [null, Validators.required],
+  //     img: [null, Validators.required],
+  //     sysDateTime: [null],
+  //     status: [0]
+  //   });
+  // }
 
-  formBuilder(): void {
-    this.formGroup = this.fb.group({
-      ktrk: [''],
-      nts: [''],
-      eltr: [''],
-    });
-  }
+  // handleChanges(event: any): void {
+  //   if (event.target.files.length > 0)
+  //   {
+  //     this.img = event.target.files[0];
+  //   }
+  // }
 
-  done(): void {
-    this.modalRef.hide();
-  }
-
-  onChangeCalendar(): void {
-    this.formGroup.get(this.channel).setValue(this.dates.map(date => moment(date).format('DD/MM/YYYY')).toString());
-  }
+  // save(): void {
+  //   this.tvFormGroup.get('img').setValue(this.img);
+  //   console.log(this.tvFormGroup.value);
+  //   this.adminService.setTv(this.tvFormGroup.value).subscribe(resp => {
+  //     console.log(resp);
+  //   });
+  // }
 }
