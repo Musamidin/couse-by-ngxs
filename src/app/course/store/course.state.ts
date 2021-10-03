@@ -18,6 +18,7 @@ export class CourseStateModel {
       areCoursesLoaded: false
     }
 })
+
 @Injectable()
 export class CourseState {
 
