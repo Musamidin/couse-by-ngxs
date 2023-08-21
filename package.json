@@ -30,7 +30,7 @@
     "primeng": "^10.0.3",
     "rxjs": "~6.6.0",
     "scandit-sdk-angular": "^3.1.1",
-    "tslib": "^2.0.0",
+    "tslib": "^2.6.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
